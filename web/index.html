@@ -211,10 +211,15 @@
               </template>
             </div>
           </details>
-          <div class="form-fields" id="song-fields" hidden>
-            <label for="song">Quale canzone vorresti cantare a squarciagola con me? <span>(facoltativo)</span></label>
-            <input id="song" name="song" maxlength="180" placeholder="Titolo e artista">
-          </div>
+          <section class="song-card" aria-labelledby="song-title">
+            <div class="song-card-heading">
+              <span class="song-microphone" aria-hidden="true"></span>
+              <h3 id="song-title">Quale canzone vorresti <em>cantare a squarciagola</em> con me?</h3>
+            </div>
+            <p id="song-intro">A cena si canta! Suggeriscimi il pezzo che ti fa partire al primo ritornello.</p>
+            <label for="song">Titolo e artista <span>(facoltativo)</span></label>
+            <input id="song" name="song" maxlength="180" aria-describedby="song-intro" placeholder="Es. Sarà perché ti amo — Ricchi e Poveri">
+          </section>
         </div>
         <button class="action" type="submit">Invia la risposta</button>
         <p class="form-status" id="rsvp-status" role="status" hidden></p>
@@ -226,7 +231,7 @@
         <div class="receipt-actions">
           <a class="action calendar-link" id="receipt-calendar" href="/festa-barbara.ics" download="festa-barbara.ics" hidden>Aggiungi al calendario</a>
           <button class="text-link" id="edit-rsvp" type="button">Modifica la mia risposta</button>
-          <button class="text-link" id="add-song" type="button" hidden>Aggiungi una canzone</button>
+          <button class="text-link" id="add-song" type="button" hidden>Suggerisci una canzone</button>
           <a class="text-link" id="receipt-video" href="#video" hidden>Mandami un augurio in video</a>
           <a class="text-link" href="#contatti">È cambiato qualcosa?</a>
         </div>

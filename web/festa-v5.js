@@ -19,7 +19,6 @@ const addSong = document.querySelector('#add-song');
 const receiptCalendar = document.querySelector('#receipt-calendar');
 const receiptVideo = document.querySelector('#receipt-video');
 const dietary = document.querySelector('#dietary');
-const songFields = document.querySelector('#song-fields');
 const mealPeople = document.querySelector('#meal-people');
 const mealTemplate = document.querySelector('#meal-template');
 const legacyMeal = document.querySelector('#legacy-meal');
@@ -27,7 +26,6 @@ const replaceLegacyMeal = document.querySelector('#replace-legacy-meal');
 const people = { guest: 'Io', companion: 'Accompagnatore adulto', 'child-1': 'Bambino 1', 'child-2': 'Bambino 2' };
 const mealPanels = new Map();
 let previousDietary;
-let editingSong = false;
 const rsvpStatus = document.querySelector('#rsvp-status');
 const videoStatus = document.querySelector('#video-status');
 const chooseVideo = document.querySelector('#choose-video');
@@ -137,7 +135,6 @@ function updateRsvp() {
   rsvpForm.elements.companionGivenName.disabled = companionFields.hidden;
   rsvpForm.elements.companionFamilyName.disabled = companionFields.hidden;
   rsvpForm.elements.song.disabled = guestFields.hidden;
-  songFields.hidden = guestFields.hidden || !editingSong;
   syncMealPanels();
   updateGiftReference();
 }
@@ -201,13 +198,9 @@ function editResponse(field) {
 }
 
 document.querySelector('#edit-rsvp').addEventListener('click', () => {
-  editingSong = Boolean(rsvpForm.elements.song.value);
-  updateRsvp();
   editResponse(rsvpForm.querySelector('input[name="attendance"]:checked') || rsvpForm.elements.givenName);
 });
 addSong.addEventListener('click', () => {
-  editingSong = true;
-  updateRsvp();
   editResponse(rsvpForm.elements.song);
 });
 
@@ -539,7 +532,6 @@ async function loadInvitation() {
         children.add(option);
       }
       children.value = rsvp.children;
-      editingSong = Boolean(rsvp.song);
       restoreDietary(rsvp.dietary);
       if (rsvp.companions > 1) {
         showStatus(rsvpStatus, 'La tua risposta precedente è salvata. Se la aggiorni, puoi indicare un accompagnatore adulto e gli eventuali bambini.');

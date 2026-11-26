@@ -1069,6 +1069,52 @@ h1, h2 { font-family: var(--serif); font-weight: normal; }
 .reply-heading .reminder-actions a { border-color: #e8c3a180; }
 .reply-heading .reminder-actions a:hover { background: #fff0dd; color: var(--wine); }
 .reply-heading .late-note { color: #fff0dd; }
+.song-card {
+  display: grid;
+  gap: .5rem;
+  margin-block: .55rem .25rem;
+  padding: clamp(.95rem, 3vw, 1.55rem);
+  border: 1px solid #c69867;
+  border-radius: .95rem;
+  background: radial-gradient(ellipse at 100% 0, #f1d4ad, transparent 75%), #fcf0dd;
+}
+.song-card-heading {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  align-items: start;
+  gap: .75rem;
+}
+.song-card h3 {
+  margin: 0;
+  color: var(--dark-wine);
+  font: clamp(1.45rem, 4vw, 2rem)/1.06 var(--serif);
+  text-wrap: balance;
+}
+.song-card h3 em { font-weight: 400; }
+.song-microphone {
+  position: relative;
+  justify-self: center;
+  margin-block-start: .15rem;
+  width: .94rem;
+  height: 1.05rem;
+  border: 1.5px solid currentColor;
+  border-radius: 52% 48% 50% 46%;
+  color: #916238;
+  background: repeating-linear-gradient(155deg, transparent 0 3px, #91623866 3px 4px);
+  transform: rotate(32deg);
+}
+.song-microphone::after {
+  content: "";
+  position: absolute;
+  inset: calc(100% + 1px) auto auto 50%;
+  width: .32rem;
+  height: .75rem;
+  border: 1.5px solid currentColor;
+  border-radius: 0 0 .25rem .25rem;
+  transform: translateX(-50%) rotate(-3deg);
+}
+.song-card p { margin: 0 0 .25rem; color: var(--muted); line-height: 1.45; }
+.song-card input { min-width: 0; }
 .reply-disco {
   position: absolute;
   z-index: -1;
