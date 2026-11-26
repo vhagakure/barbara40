@@ -223,6 +223,9 @@ async function storeRsvp(fields, db, userId, current = null) {
   if (companions !== 0 && companions !== 1 && companions !== current?.companions) {
     return reject('Puoi indicare al massimo un accompagnatore adulto.', 400);
   }
+  if (!current && companions === 1 && !companionGivenName) {
+    return reject('Inserisci il nome del tuo accompagnatore.', 400);
+  }
   if (!Number.isSafeInteger(children) || children < 0) {
     return reject('Indica il numero di bambini con un numero intero da zero in su.', 400);
   }
