@@ -1,0 +1,37 @@
+name: Aggiorna l’album
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - foto-evento/**
+      - scripts/upload-album.mjs
+      - worker/photo-types.json
+      - worker/album-video-types.json
+      - package.json
+      - package-lock.json
+      - .github/workflows/album.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: barbara-album
+  cancel-in-progress: false
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    env:
+      CF_R2_BUCKET: ${{ vars.CF_R2_BUCKET }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run foto:pubblica -- "$CF_R2_BUCKET"

@@ -1,0 +1,6 @@
+/dist/
+/.local-v5/
+/node_modules/
+/.wrangler/
+/.wrangler.deploy.json
+/.env.cloudflare

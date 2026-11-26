@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#32070e">
+  <meta name="description" content="Un invito per te, da Barbara. Scorri per aprire la busta.">
+  <title>Un invito da Barbara</title>
+  <link rel="stylesheet" href="/invito-v5.css">
+  <script src="/busta-apertura.js" defer></script>
+  <script src="/festa-v5.js" defer></script>
+</head>
+<body>
+  <header class="site-header" id="inizio">
+    <a class="brand" href="#inizio"><span class="monogram" aria-hidden="true">BR</span><span>Barbara</span></a>
+    <nav aria-label="Menu" id="invitation-nav">
+      <a href="#festa">La serata</a>
+      <a href="#rsvp">Conferma</a>
+      <a href="#video">Video</a>
+      <a href="#regalo">Il mio sogno</a>
+    </nav>
+    <nav aria-label="Ricordi della serata" id="memories-nav" hidden>
+      <a href="#event-after-view">Grazie</a>
+      <a href="#ricordi-video" id="memories-video-link" hidden>Video</a>
+      <a href="#ricordi-foto" id="memories-photo-link" hidden>Foto</a>
+    </nav>
+  </header>
+  <main>
+    <section class="event-day" id="event-day-view" aria-labelledby="titolo-event-day" hidden>
+      <header class="event-day-intro">
+        <div class="page-width">
+          <p class="event-day-kicker">{{EVENT_DAY}} · Dinner &amp; Party</p>
+          <h1 id="titolo-event-day">Ci vediamo <em>stasera!</em></h1>
+          <div class="event-day-layout">
+            <img class="event-day-card" src="/assets/biglietto-disco.webp" width="1086" height="1448"
+              alt="Invito per i 40 anni di Barbara, con sfere dorate.">
+            <div class="event-day-info">
+              <p class="event-day-tagline">Camicia stirata? Scarpe da ballo pronte? Io sto già scaldando la voce.</p>
+              <p class="event-day-hours">{{EVENT_TIME}}<span>–{{EVENT_END_TIME}}</span></p>
+              <h2>Country Club Bari</h2>
+              <address>{{EVENT_ADDRESS}}</address>
+              <p class="event-day-parking">Parcheggio all’interno della struttura, a disposizione degli ospiti.</p>
+              <a class="action calendar-link event-day-directions" href="{{DAY_DIRECTIONS}}" target="_blank" rel="noopener">Indicazioni su Google Maps</a>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="page-width event-day-content">
+        <section class="event-day-arrival" aria-labelledby="titolo-mappa">
+          <h2 id="titolo-mappa">Come arrivare</h2>
+          <iframe id="event-day-map" data-src="{{DAY_MAP}}" title="Mappa del Country Club Bari" width="480" height="320" loading="lazy" referrerpolicy="no-referrer"></iframe>
+        </section>
+        <section class="event-day-useful" aria-labelledby="titolo-info-serata">
+          <h2 id="titolo-info-serata">Info utili</h2>
+          <dl class="event-day-notes">
+            <div><dt>Dress code</dt><dd>Elegante, con un tocco personale.</dd></div>
+            <div><dt>Un imprevisto?</dt><dd>{{CONTACT_DAY_ACTION}}</dd></div>
+          </dl>
+        </section>
+      </div>
+    </section>
+    <section class="event-memories" id="event-after-view" aria-labelledby="titolo-event-after" hidden>
+      <header class="memories-intro">
+        <div class="page-width">
+          <p class="memories-date">{{EVENT_DAY}} · Country Club Bari</p>
+          <h1 id="titolo-event-after">Grazie di aver festeggiato con me!</h1>
+          <p>Che bello avervi visti cantare, brindare e ballare con me.</p>
+          <span class="memories-signature">Barbara</span>
+        </div>
+      </header>
+      <div class="page-width memories-content">
+        <section class="memories-reel" id="ricordi-video" aria-labelledby="titolo-ricordi-video" hidden>
+          <h2 id="titolo-ricordi-video">La serata in un video</h2>
+          <video id="memories-video" controls playsinline preload="metadata" aria-label="Video della serata"></video>
+        </section>
+        <section class="memories-album" id="ricordi-foto" aria-labelledby="titolo-ricordi-foto">
+          <h2 id="titolo-ricordi-foto">Le foto della serata</h2>
+          <p id="memories-waiting">Appena le foto saranno pronte, le troverai qui.</p>
+          <p class="input-note" id="memories-samples" hidden>Foto e video di cortesia per questa anteprima.</p>
+          <div class="event-gallery" id="memories-photos" hidden></div>
+        </section>
+      </div>
+    </section>
+    <section class="hero" id="invito" aria-label="Invito di Barbara">
+      <div class="hero-stage">
+        <img class="hero-ornament" src="/assets/abete.webp" width="532" height="402" alt="">
+        <p class="hero-intro">Un invito per te</p>
+        <div class="envelope">
+          <div class="envelope-back" aria-hidden="true"></div>
+          <div class="letter-slot">
+            <div class="letter">
+              <h1 class="visually-hidden">I miei 40 · Barbara</h1>
+              <img src="/assets/biglietto-disco.webp" width="1086" height="1448"
+                alt="Dinner &amp; Party, {{EVENT_DAY}} alle {{EVENT_TIME}}, Country Club Bari." fetchpriority="high">
+            </div>
+          </div>
+          <div class="envelope-front" aria-hidden="true"></div>
+          <div class="envelope-flap envelope-flap-back" aria-hidden="true"></div>
+          <div class="envelope-flap envelope-flap-front" aria-hidden="true"></div>
+          <img class="wax-seal" src="/assets/sigillo-br.webp" width="480" height="454" alt="">
+        </div>
+        <p class="scroll-cue scroll-cue-open">Scorri verso il basso per aprire</p>
+      </div>
+    </section>
+
+    <section class="evening" id="festa" data-before-event-day aria-labelledby="titolo-festa">
+      <img class="evening-disco" src="/assets/sfera-dorata.webp" width="480" height="480" alt="" loading="lazy">
+      <div class="page-width">
+        <div class="evening-grid">
+          <div class="evening-heading">
+            <h2 id="titolo-festa">La serata</h2>
+            <p class="venue-date"><time id="event-start" datetime="{{EVENT_START}}" data-zone="{{EVENT_ZONE}}" data-end="{{EVENT_END}}">{{EVENT_DAY}}</time></p>
+            <p class="evening-hours">{{EVENT_TIME}}–{{EVENT_END_TIME}} <span>·</span> Dinner &amp; Party</p>
+          </div>
+          <img class="evening-art" src="/assets/pinup-coppa.webp" width="600" height="600" alt="" loading="lazy">
+          <div class="evening-copy">
+            <p class="lead">A cena cantiamo a squarciagola sulle canzoni italiane che conosciamo tutti. E dopo, tutti in pista!</p>
+            <p class="countdown" id="countdown" hidden><span aria-hidden="true">✦</span> <span id="countdown-value"></span></p>
+          </div>
+        </div>
+        <div class="venue">
+          <img src="/assets/country-club.png" alt="Logo del Country Club Bari" width="250" height="171" loading="lazy">
+          <div class="venue-data">
+            <h3>Country Club Bari</h3>
+            <p class="address">{{EVENT_ADDRESS}}</p>
+          </div>
+          <div class="venue-actions">
+            <a class="text-link" href="{{DAY_DIRECTIONS}}" target="_blank" rel="noopener">Indicazioni su Google Maps</a>
+          </div>
+        </div>
+        <div class="arrival-info">
+          <h3>Info utili</h3>
+          <dl class="arrival-notes">
+            <div><dt>Dress code</dt><dd>Elegante, con un tocco personale.</dd></div>
+            <div><dt>Parcheggio</dt><dd>All’interno della struttura, a disposizione degli ospiti.</dd></div>
+          </dl>
+        </div>
+        <a class="action calendar-link evening-rsvp" href="#rsvp">Conferma la tua presenza</a>
+      </div>
+    </section>
+
+    <section class="section page-width rsvp-reply" id="rsvp" data-before-event-day aria-labelledby="titolo-rsvp">
+      <div class="reply-heading">
+        <img class="reply-disco" src="/assets/sfera-dorata.webp" width="480" height="480" alt="" loading="lazy">
+        <h2 id="titolo-rsvp">Ci <em>sarai?</em></h2>
+        <p class="reply-deadline deadline-mark" id="rsvp-deadline">Rispondi entro il <time datetime="{{RSVP_DATE}}">{{RSVP_DAY}}</time></p>
+        <p class="input-note late-note" id="late-rsvp" hidden>Per le variazioni dell’ultimo minuto, <a class="text-link" href="#contatti">scrivimi</a>.</p>
+        <details class="reply-reminder" id="reply-reminder">
+          <summary>Ricordamelo più tardi</summary>
+          <p>Ti serve più tempo?<br>Salva un promemoria per il <time datetime="{{REMINDER_START}}">{{REMINDER_DAY}} alle {{REMINDER_TIME}}</time>.</p>
+          <div class="reminder-actions">
+            <a class="calendar-link" href="/promemoria-risposta.ics" download="promemoria-risposta.ics">Calendario Apple o altro</a>
+            <a class="calendar-link" href="{{REMINDER_GOOGLE}}" target="_blank" rel="noopener">Google Calendar</a>
+          </div>
+          <p class="input-note">Se scarichi il file, aprilo nel calendario. Dopo il salvataggio, verifica che l’avviso sia attivo.</p>
+        </details>
+      </div>
+      <form class="paper-form" id="rsvp-form" method="post" action="/api/rsvp">
+        <fieldset class="reply-options">
+          <legend class="visually-hidden">Parteciperai alla serata?</legend>
+          <label class="choice"><input type="radio" name="attendance" value="yes" required> Ci sarò</label>
+          <label class="choice"><input type="radio" name="attendance" value="no" required> Non riesco a venire</label>
+        </fieldset>
+        <p class="input-note" id="previous-guest-name" hidden></p>
+        <div class="rsvp-names">
+          <label>Nome <input name="givenName" autocomplete="section-ospite given-name" maxlength="120" required></label>
+          <label>Cognome <input name="familyName" autocomplete="section-ospite family-name" maxlength="120" required></label>
+        </div>
+        <div class="form-fields" id="guest-fields" hidden>
+          <label class="choice"><input id="companion" name="companion" type="checkbox" value="1"> Verrò con un accompagnatore adulto</label>
+          <div class="form-fields" id="companion-fields" hidden>
+            <p class="input-note" id="previous-companion-name" hidden></p>
+            <div class="rsvp-names">
+              <label>Nome accompagnatore <span>(facoltativo)</span><input name="companionGivenName" autocomplete="section-accompagnatore given-name" maxlength="120"></label>
+              <label>Cognome accompagnatore <span>(facoltativo)</span><input name="companionFamilyName" autocomplete="section-accompagnatore family-name" maxlength="120"></label>
+            </div>
+          </div>
+          <label for="children">Quanti bambini verranno con te? <span>(facoltativo)</span></label>
+          <select id="children" name="children">
+            <option value="0">Nessun bambino</option>
+            <option value="1">1 bambino</option>
+            <option value="2">2 bambini</option>
+          </select>
+          <details class="dietary" id="dietary">
+            <summary>Esigenze per la cena <span>(facoltativo)</span></summary>
+            <div class="dietary-fields">
+              <p class="input-note">Indica le esigenze per ciascuna persona. Le informazioni sono visibili a chi organizza la cena.</p>
+              <div class="legacy-meal" id="legacy-meal" hidden>
+                <p id="legacy-meal-text"></p>
+                <label class="choice"><input id="replace-legacy-meal" type="checkbox"> Ho riportato queste indicazioni sotto la persona giusta</label>
+              </div>
+              <div id="meal-people"></div>
+              <template id="meal-template">
+                <details class="meal-person">
+                  <summary></summary>
+                  <fieldset class="meal-fields">
+                    <legend class="visually-hidden">Indicazioni alimentari</legend>
+                    <p class="meal-label">Allergie e intolleranze</p>
+                    <div class="dietary-options">
+                      <!-- dietary-allergens -->
+                    </div>
+                    <p class="meal-label">Altre esigenze</p>
+                    <div class="dietary-options">
+                      <!-- dietary-restrictions -->
+                    </div>
+                    <label class="meal-notes-label">Altre indicazioni
+                      <textarea rows="2" maxlength="500" placeholder="Es. allergia alle noci, anche in tracce"></textarea>
+                    </label>
+                  </fieldset>
+                </details>
+              </template>
+            </div>
+          </details>
+          <div class="form-fields" id="song-fields" hidden>
+            <label for="song">Quale canzone vorresti cantare a squarciagola con me? <span>(facoltativo)</span></label>
+            <input id="song" name="song" maxlength="180" placeholder="Titolo e artista">
+          </div>
+        </div>
+        <button class="action" type="submit">Invia la risposta</button>
+        <p class="form-status" id="rsvp-status" role="status" hidden></p>
+      </form>
+      <div class="rsvp-receipt" id="rsvp-receipt" hidden>
+        <h3 id="receipt-title" tabindex="-1">La tua risposta</h3>
+        <p id="receipt-message"></p>
+        <dl class="receipt-details" id="receipt-details"></dl>
+        <div class="receipt-actions">
+          <a class="action calendar-link" id="receipt-calendar" href="/festa-barbara.ics" download="festa-barbara.ics" hidden>Aggiungi al calendario</a>
+          <button class="text-link" id="edit-rsvp" type="button">Modifica la mia risposta</button>
+          <button class="text-link" id="add-song" type="button" hidden>Aggiungi una canzone</button>
+          <a class="text-link" id="receipt-video" href="#video" hidden>Mandami un augurio in video</a>
+          <a class="text-link" href="#contatti">È cambiato qualcosa?</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="video-band" id="video" data-before-event-day aria-labelledby="titolo-video">
+      <div class="section page-width video-layout">
+        <div class="video-story">
+          <img class="film-art" src="/assets/pellicola.webp" width="539" height="320" alt="" loading="lazy">
+          <h2 id="titolo-video">Mi lasci<br>un augurio?</h2>
+          <p class="deadline-mark" id="video-deadline">Mandami gli auguri entro il <time datetime="{{RSVP_DATE}}">{{RSVP_DAY}}</time></p>
+          <p class="lead">Se ti va, mandami un augurio o raccontami un ricordo che abbiamo in comune. Mi farà piacere vederti e sentirti, anche se non potrai esserci. Bastano 30 secondi col telefono.</p>
+          <p class="input-note" id="late-wish" hidden>Se vuoi mandarmi un augurio all’ultimo minuto, <a class="text-link" href="#contatti">scrivimi</a>.</p>
+          <p class="video-prompt">Non sai da dove partire? <em>«Barbara, quella volta che…»</em></p>
+        </div>
+        <form class="paper-form" id="video-form" method="post" action="/api/video" enctype="multipart/form-data">
+          <label for="video-name">Nome e cognome</label>
+          <input id="video-name" name="name" autocomplete="name" maxlength="120" required>
+          <fieldset class="video-source">
+            <legend>Il tuo video</legend>
+            <div class="video-actions">
+              <button type="button" class="source-button" id="choose-video">
+                <span class="source-icon source-icon-library" aria-hidden="true"></span>
+                <span>Scegli dalla libreria</span>
+              </button>
+              <button type="button" class="source-button" id="record-video">
+                <span class="source-icon source-icon-camera" aria-hidden="true"></span>
+                <span>Registra un video</span>
+              </button>
+            </div>
+            <input id="video-library" type="file" accept="video/*" hidden>
+            <input id="video-camera" type="file" accept="video/*" capture="user" hidden>
+          </fieldset>
+          <div class="recording-panel" id="recording-panel" hidden>
+            <video id="recording-preview" autoplay muted playsinline aria-label="Anteprima della registrazione"></video>
+            <div class="video-inline">
+              <button type="button" class="action" id="stop-recording">Termina la registrazione</button>
+              <button type="button" class="quiet-button" id="cancel-recording">Annulla</button>
+            </div>
+          </div>
+          <div class="video-picked" id="video-picked" hidden>
+            <div class="video-inline">
+              <span id="video-picked-name"></span>
+              <button type="button" class="quiet-button" id="remove-video">Rimuovi</button>
+            </div>
+            <video id="video-playback" controls playsinline preload="metadata" aria-label="Anteprima del video da inviare"></video>
+          </div>
+          <fieldset>
+            <legend>Come preferisci che usi il tuo video?</legend>
+            <label class="choice"><input type="radio" name="visibility" value="private" required> Solo per te, Barbara</label>
+            <label class="choice"><input type="radio" name="visibility" value="memory" required> Puoi includerlo in un eventuale video ricordo per gli invitati</label>
+          </fieldset>
+          <button class="action" type="submit">Carica il tuo video</button>
+          <p class="form-status" id="video-status" role="status" hidden></p>
+        </form>
+        <details class="written-wish">
+          <summary>Preferisci scrivermi?</summary>
+          <form class="paper-form" id="wish-form" method="post" action="/api/auguri">
+            <label for="wish-name">Nome e cognome</label>
+            <input id="wish-name" name="name" autocomplete="name" maxlength="120" required>
+            <label for="wish-text">Il tuo augurio</label>
+            <textarea id="wish-text" name="message" rows="3" maxlength="600" required></textarea>
+            <button class="action" type="submit">Invia il tuo messaggio</button>
+            <p class="form-status" id="wish-status" role="status" hidden></p>
+          </form>
+        </details>
+      </div>
+    </section>
+
+    <section class="section page-width gift" id="regalo" data-before-event-day aria-labelledby="titolo-regalo">
+      <div class="gift-story">
+        <div>
+          <div class="gift-heading">
+            <img class="gift-art" src="/assets/pacchetto-regalo.webp" width="320" height="297" alt="" loading="lazy">
+            <h2 id="titolo-regalo">Il mio prossimo sogno</h2>
+          </div>
+          <p class="lead">Il regalo più bello sarà festeggiare con te. Per i miei 40 sogno un viaggio. La meta è ancora tutta da scegliere. Se ti fa piacere, puoi contribuire a farmi partire.</p>
+        </div>
+        <img class="flight-art" src="/assets/viaggio.webp" width="591" height="363" alt="" loading="lazy">
+      </div>
+      <div class="gift-card" id="gift-card" hidden>
+        <h3>Coordinate per il bonifico</h3>
+        <p class="gift-example" id="gift-example" hidden>IBAN di esempio. Non usare per bonifici.</p>
+        <dl>
+          <div id="gift-iban" hidden><dt>IBAN</dt><dd><span></span><button type="button" data-copy="iban">Copia IBAN</button></dd></div>
+          <div id="gift-recipient" hidden><dt>Intestatario</dt><dd><span></span><button type="button" data-copy aria-label="Copia intestatario">Copia</button></dd></div>
+          <div>
+            <dt>Causale suggerita</dt>
+            <dd><span id="gift-reference"></span><button type="button" data-copy="reference" aria-label="Copia causale">Copia</button></dd>
+          </div>
+        </dl>
+        <p class="form-status" id="copy-status" role="status" hidden></p>
+      </div>
+    </section>
+    <section class="page-width contact-note" id="contatti" data-before-event-day aria-labelledby="titolo-contatti">
+      <h2 id="titolo-contatti">È cambiato qualcosa?</h2>
+      <div>
+        <p>{{CONTACT_COPY}}</p>
+        {{CONTACT_ACTION}}
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><span>A presto, Barbara</span><a href="/organizzazione" id="organizer-link" hidden>Organizzazione</a><a href="#inizio" id="footer-top">Torna all’invito</a></footer>
+</body>
+</html>

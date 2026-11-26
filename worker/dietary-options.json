@@ -1,0 +1,26 @@
+{
+  "allergens": {
+    "gluten": "Cereali con glutine",
+    "crustaceans": "Crostacei",
+    "eggs": "Uova",
+    "fish": "Pesce",
+    "peanuts": "Arachidi",
+    "soy": "Soia",
+    "milk": "Latte e derivati",
+    "tree-nuts": "Frutta a guscio",
+    "celery": "Sedano",
+    "mustard": "Senape",
+    "sesame": "Sesamo",
+    "sulphites": "Anidride solforosa e solfiti",
+    "lupin": "Lupini",
+    "molluscs": "Molluschi"
+  },
+  "restrictions": {
+    "vegetarian": "Vegetariano",
+    "vegan": "Vegano",
+    "lactose-free": "Senza lattosio",
+    "fully-cooked": "Solo cibi ben cotti (ad es. in gravidanza)",
+    "no-pork": "Senza carne di maiale",
+    "alcohol-free": "Senza alcol"
+  }
+}

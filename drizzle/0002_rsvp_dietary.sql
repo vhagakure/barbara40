@@ -1,0 +1,1 @@
+ALTER TABLE rsvps ADD COLUMN dietary TEXT NOT NULL DEFAULT '{}';

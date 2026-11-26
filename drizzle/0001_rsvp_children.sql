@@ -1,0 +1,1 @@
+ALTER TABLE rsvps ADD COLUMN children INTEGER NOT NULL DEFAULT 0 CHECK (children >= 0);
